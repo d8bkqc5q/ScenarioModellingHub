@@ -28,7 +28,7 @@ jobs:
     if: ${{ github.repository_owner == 'Testing-Forecast-Actions' && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Job-activated"
+      - run: echo "Job-activated, event -> ${{ github.event_name }}"
 
   gen_ensemble_job:
     runs-on: ubuntu-latest
