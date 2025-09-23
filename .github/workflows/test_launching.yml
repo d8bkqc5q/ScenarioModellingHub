@@ -5,7 +5,7 @@ on:
 
     
   schedule:
-    - cron: '45 12 * * 2'
+    - cron: '47 12 * * 2'
 
 jobs:
   # gatekeeper:
@@ -23,6 +23,10 @@ jobs:
   #           echo "ok=false" >> "$GITHUB_OUTPUT"
           # fi
 
+  trace_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Job-activated, event -> ${{ github.event_name }}"
   
   gen_baseline_job:    
     if: ${{ github.repository_owner == 'Testing-Forecast-Actions' && (github.event_name == 'workflow_dispatch' || github.event_name == 'workflow_call') }}
