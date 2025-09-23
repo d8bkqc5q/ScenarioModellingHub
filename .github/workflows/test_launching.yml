@@ -31,6 +31,7 @@ jobs:
       - run: echo "Job-activated, event -> ${{ github.event_name }}"
 
   gen_ensemble_job:
+    needs: gen_baseline_job
     runs-on: ubuntu-latest
     steps:
       - run: echo "gen_ensemble_job"
