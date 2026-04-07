@@ -1,41 +1,21 @@
 name: LaunchingTest
-
-on:
-  workflow_dispatch:
-
-    
+'on':
+  workflow_dispatch: null
   schedule:
-    - cron: '40 13 * * 2'
-
+  - cron: 40 13 * * 2
 jobs:
-  # gatekeeper:
-  #   runs-on: ubuntu-latest
-  #   outputs:
-  #     run_pipeline: ${{ steps.check.outputs.ok }}
-  #   steps:
-  #     - id: check
-  #       run: |
-  #         echo "EventName: ${GITHUB_EVENT_NAME}"
-  #         if [[ "${GITHUB_REPOSITORY_OWNER}" == "Testing-Forecast-Actions" ]] && \
-  #            ([[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" ]] || [[ "${GITHUB_EVENT_NAME}" == "schedule" ]]); then
-  #           echo "ok=true" >> "$GITHUB_OUTPUT"
-  #         else
-  #           echo "ok=false" >> "$GITHUB_OUTPUT"
-          # fi
-
   trace_job:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Job-activated, event -> ${{ github.event_name }}"
-  
-  gen_baseline_job:    
-    if: ${{ github.repository_owner == 'Testing-Forecast-Actions' && (github.event_name == 'workflow_dispatch' || github.event_name == 'schedule') }}
+    - run: echo "Job-activated, event -> ${{ github.event_name }}"
+  gen_baseline_job:
+    if: ${{ github.repository_owner == 'd8bkqc5q' && (github.event_name == 'workflow_dispatch'
+      || github.event_name == 'schedule') }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Job-activated, event -> ${{ github.event_name }}"
-
+    - run: echo "Job-activated, event -> ${{ github.event_name }}"
   gen_ensemble_job:
     needs: gen_baseline_job
     runs-on: ubuntu-latest
     steps:
-      - run: echo "gen_ensemble_job"
+    - run: echo "gen_ensemble_job"
